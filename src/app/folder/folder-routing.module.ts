@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FolderPage } from './folder.page';
 
+//hice un cambio 
 const routes: Routes = [
   {
     path: '',
