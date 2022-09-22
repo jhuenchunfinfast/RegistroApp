@@ -1,0 +1,24 @@
+:root {
+    --ion-color-favorite: #856AB0;
+}
+
+.login {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.titles {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.subtitles {
+    font-family: 'Inter', sans-serif;
+    text-transform: none;
+}
+
+.ion-favorito-button {
+    --ion-color-base: var(--ion-color-favorite);
+}
+
+//El stilo de la pagina 

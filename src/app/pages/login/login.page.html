@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login">
+  <ion-card class="ion-text-center">
+    <ion-card-header>
+      <img src="assets/ima/logo_duoc.png" alt="" width="130" id="card">
+      <p class="subtitles">
+        Ingresa tus credenciales
+      </p>
+    </ion-card-header>
+  </ion-card>
+  <ion-card class="ion-padding">
+    <form [formGroup]="formLogin" class="ion-text-center" (click)="animacion()">
+      <div>
+        <ion-item>
+          <ion-label class="subtitles">
+            Correo: 
+          </ion-label>
+          <ion-input type="text" formControlName="correo"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="subtitles">
+            Contraseña:
+          </ion-label>
+          <ion-input type="password" formControlName="contrasena"></ion-input>
+        </ion-item>
+      </div>
+      <div class="ion-margin">
+        <ion-button expand="full" (click)="iniciarSesion()" [disabled]="!formLogin.valid" color="tertiary"
+          shape="round">
+          Ingresar
+          <ion-icon slot="end" name="arrow-forward-circle"></ion-icon>
+        </ion-button>
+        <ion-button expand="full" routerLink="/register" color="tertiary" shape="round">Registrarse <ion-icon slot="end"
+            name="person-add-sharp"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="ion-margin">
+        <a routerLink="/recovery-password">¿Olvidaste tu contraseña?</a>
+      </div>
+    </form>
+  </ion-card>
+</ion-content>
+
+<!-- Diseño de la pagina -->
