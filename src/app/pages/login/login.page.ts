@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
 import { AlertController, NavController, AnimationController, createAnimation } from '@ionic/angular';
+import { AuthenticationService } from '../../service/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginPage implements OnInit {
     contrasena: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)])
   })
 
-  constructor(private router: Router, private alertController: AlertController, private animationCtrl: AnimationController) {
+  constructor(private authService: AuthenticationService, private navCtrl: NavController, private router: Router, private alertController: AlertController,
+    private animationCtrl: AnimationController) {
     this.animacion();
   }
 
@@ -32,14 +34,10 @@ export class LoginPage implements OnInit {
   }
 
   iniciarSesion() {
-    if ('admin@hotmail.com' == this.formLogin.value.correo) {
-      this.irAlaPaginaDeInicio();
-    } else {
-      this.mostrarAlerta();
-
+    if ((this.formLogin.value.correo.trim() != "") && ((this.formLogin.value.contrasena.trim() != ""))) {
+      this.authService.login(this.formLogin.value.correo, this.formLogin.value.contrasena);
     }
   }
-
   async mostrarAlerta() {
     const alert = await this.alertController.create({
       header: 'Error',
