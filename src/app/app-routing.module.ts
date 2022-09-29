@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NotfoundPage } from './pages/notfound/notfound.page';
 import { AuthGuardService } from './service/auth-guard.service';
 
 const routes: Routes = [
@@ -36,6 +37,11 @@ const routes: Routes = [
     path: 'qr',
     loadChildren: () => import('./pages/qr/qr.module').then( m => m.QrPageModule),
     canActivate: [AuthGuardService]
+  },
+  {
+    path: '**', 
+    component: NotfoundPage,
+    loadChildren: () => import('./pages/notfound/notfound.module').then( m => m.NotfoundPageModule)
   }
 ];
 
