@@ -1,9 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>notfound</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-title>Pagina no encontrada</ion-title>
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-text-center">
+    <img id="notfound" src="assets/ima/404.png" alt="" (click)="animacion()">
+    <ion-card-header>
+      <ion-card-title>No hemos encontrado la pagina</ion-card-title>
+      <ion-card-subtitle>La ruta que intentas acceder no existe </ion-card-subtitle>
+      <ion-button routerLink="/login" color="tertiary" shape="round"> ir a iniciar sesion <ion-icon slot="end"
+          name="arrow-back-circle"></ion-icon>
+      </ion-button>
+    </ion-card-header>
+  </ion-card>
 </ion-content>
