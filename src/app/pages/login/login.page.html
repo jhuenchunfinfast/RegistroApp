@@ -9,6 +9,9 @@
       <p class="subtitles">
         Ingresa tus credenciales
       </p>
+      <p>
+        {{message}}
+      </p>
     </ion-card-header>
   </ion-card>
   <ion-card class="ion-padding">
@@ -31,6 +34,11 @@
         <ion-button expand="full" (click)="iniciarSesion()" [disabled]="!formLogin.valid" color="tertiary"
           shape="round">
           Ingresar
+          <ion-icon slot="end" name="arrow-forward-circle"></ion-icon>
+        </ion-button>
+        <ion-button expand="full" (click)="Mostrar()" color="tertiary"
+          shape="round">
+          Mostrar
           <ion-icon slot="end" name="arrow-forward-circle"></ion-icon>
         </ion-button>
         <ion-button expand="full" routerLink="/register" color="tertiary" shape="round">Registrarse <ion-icon slot="end"

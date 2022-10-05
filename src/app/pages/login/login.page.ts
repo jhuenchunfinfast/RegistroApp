@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
 import { AlertController, NavController, AnimationController, createAnimation } from '@ionic/angular';
 import { AuthenticationService } from '../../service/authentication.service';
+import { ConsumoAPIService } from 'src/app/services/consumo-api.service';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,15 @@ import { AuthenticationService } from '../../service/authentication.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  message;
   //esto interpreta el formulario de la pagina(validacion)
   formLogin = new FormGroup({
     correo: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(50)]),
     contrasena: new FormControl('', [Validators.required, Validators.maxLength(16), Validators.minLength(8)])
+
   })
 
-  constructor(private authService: AuthenticationService, private navCtrl: NavController, private router: Router, private alertController: AlertController,
+  constructor(private consumoApi: ConsumoAPIService, private authService: AuthenticationService, private navCtrl: NavController, private router: Router, private alertController: AlertController,
     private animationCtrl: AnimationController) {
     this.animacion();
   }
@@ -38,6 +41,7 @@ export class LoginPage implements OnInit {
       this.authService.login(this.formLogin.value.correo, this.formLogin.value.contrasena);
     }
   }
+
   async mostrarAlerta() {
     const alert = await this.alertController.create({
       header: 'Error',
@@ -53,7 +57,7 @@ export class LoginPage implements OnInit {
       .addElement(document.querySelector('#card'))
       .duration(5000)
       .keyframes([
-        { offset: 0, transform: 'scale(1))', opacity: '0.5' },
+        { offset: 0, transform: 'scale(1)', opacity: '0.5' },
         { offset: 0.5, transform: 'scale(0.8)', opacity: '1' },
         { offset: 1, transform: 'scale(1)', opacity: '0.5' }
       ]);
@@ -64,6 +68,14 @@ export class LoginPage implements OnInit {
       .addAnimation([squareA]);
 
     parent.play();
+  }
+  Mostrar() {
+    this.consumoApi.getPosts().subscribe((res) => {
+      this.message = '' + res[0].title;
+      console.log(res[0]);
+    }, (error) => {
+      console.log(error);
+    })
   }
 }
 

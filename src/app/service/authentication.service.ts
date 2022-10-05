@@ -21,14 +21,15 @@ export class AuthenticationService {
   }
 
   ifLoggedIn() {
+    this.storage.create();
     this.storage.get('USER_INFO').then((response) => {
       if (response) {
         this.authState.next(true)
       }
     });
   }
-  login(correo,contraseña) {
-    if (correo == "aaa") {
+  login(correo, contraseña) {
+    if (correo == "aaa@hotmail.com") {
       var navigationExtrasOK: NavigationExtras = {
         state: {
           user_id: '1234',
@@ -37,32 +38,32 @@ export class AuthenticationService {
         }
       };
       this.storage.set('USER_INFO', navigationExtrasOK).then((response) => {
-        this.router.navigate(['folder'], navigationExtrasOK);
+        this.router.navigate(['folder/Inbox'], navigationExtrasOK);
         this.authState.next(true);
       });
-    }else{
+    } else {
       var navigationExtrasOK: NavigationExtras = {
-        state:{
+        state: {
           user_id: '',
-          user_name:'',
-          message:  ' Nombre de usuario o contraseña invalidos'
+          user_name: '',
+          message: ' Nombre de usuario o contraseña invalidos'
         }
       };
-      this.storage.set('USER_INFO', navigationExtrasOK).then((response) =>{
+      this.storage.set('USER_INFO', navigationExtrasOK).then((response) => {
         this.router.navigate(['login'], navigationExtrasOK);
         this.authState.next(false);
       });
     }
   }
-  logout(){
-    this.storage.remove('USER_INFO').then(() =>{
+  logout() {
+    this.storage.remove('USER_INFO').then(() => {
       this.router.navigate(['login']);
       this.authState.next(false);
 
     });
   }
-isAuthenticated(){
-  return this.authState.value;
- }
+  isAuthenticated() {
+    return this.authState.value;
+  }
 }
-  
+
