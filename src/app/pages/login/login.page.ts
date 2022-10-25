@@ -93,32 +93,4 @@ export class LoginPage implements OnInit {
 
     parent.play();
   }
-  Mostrar() {
-    this.consumoApi.getPosts().subscribe(
-      (res) => {
-        this.message = '' + res[0].title;
-        console.log(res[0]);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-
-  Actualizar() {
-    var post = {
-      userId: 1,
-      title: 'Prueba',
-      body: 'buenas tardes',
-    };
-    this.consumoApi.updatePost(1, post).subscribe(
-      (success) => {
-        this.message = '' + success.title;
-        console.log(success.title);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
 }

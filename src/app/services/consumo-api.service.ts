@@ -11,6 +11,7 @@ export class ConsumoAPIService {
     Headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
+      'Response-Type': 'application/json',
     }),
   };
 
@@ -21,14 +22,20 @@ export class ConsumoAPIService {
   getPost(id) {
     return this.http.get(`${this.apiURL}/posts/${id}`);
   }
+
   getPosts(): Observable<any> {
     return this.http.get(this.apiURL + '/posts/').pipe(retry(3));
   }
 
-  updatePost(id,post): Observable<any> {
-    return;
-    this.http
-      .put(this.apiURL + '/posts/'+id, post) 
-      .pipe(retry(3));
+  createPost(post): Observable<any> {
+    return this.http.post(`${this.apiURL}/posts/`, post).pipe(retry(3));
+  }
+
+  updatePost(id, post): Observable<any> {
+    return this.http.put(`${this.apiURL}/posts/${id}`, post).pipe(retry(3));
+  }
+
+  deletePost(id): Observable<any> {
+    return this.http.delete(`${this.apiURL}/posts/${id}`).pipe(retry(3));
   }
 }

@@ -31,12 +31,10 @@ const routes: Routes = [
   {
     path: 'asistencia-linea',
     loadChildren: () => import('./pages/asistencia-linea/asistencia-linea.module').then( m => m.AsistenciaLineaPageModule),
-    canActivate: [AuthGuardService]
   },
   {
     path: 'qr',
     loadChildren: () => import('./pages/qr/qr.module').then( m => m.QrPageModule),
-    canActivate: [AuthGuardService]
   },
   {
     path: '**', 
