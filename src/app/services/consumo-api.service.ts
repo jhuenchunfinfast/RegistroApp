@@ -17,7 +17,7 @@ export class ConsumoAPIService {
 
   apiURL = 'https://jsonplaceholder.typicode.com';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getPost(id) {
     return this.http.get(`${this.apiURL}/posts/${id}`);
