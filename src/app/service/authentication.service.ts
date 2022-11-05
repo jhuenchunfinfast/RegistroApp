@@ -41,7 +41,20 @@ export class AuthenticationService {
         this.router.navigate(['folder/Inbox'], navigationExtrasOK);
         this.authState.next(true);
       });
-    } else {
+    } 
+    if (correo == "bbb@hotmail.com") {
+      var navigationExtrasOK: NavigationExtras = {
+        state: {
+          user_id: '7777',
+          user_name: 'Patricio Salinas',
+          message: 'Bienvenido Profesor'
+        }
+      };
+      this.storage.set('USER_PROFESOR', navigationExtrasOK).then((response) => {
+        this.router.navigate(['homeprofesor'], navigationExtrasOK);
+        this.authState.next(true);
+      });
+    }else {
       var navigationExtrasOK: NavigationExtras = {
         state: {
           user_id: '',

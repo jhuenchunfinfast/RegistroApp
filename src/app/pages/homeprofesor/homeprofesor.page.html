@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>RegistroApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-text-center">
+    <img src="assets/ima/antonio-varas.jpeg" alt="" />
+    <ion-card-header>
+      <ion-card-title>Bienvenido Profesor</ion-card-title>
+      <ion-card-subtitle
+        >Accede al menu para acceder a la asistencia en linea
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-button
+      expand="full"
+      (click)="Mostrar()"
+      color="tertiary"
+      shape="round"
+    >
+      Mostrar
+      <ion-icon slot="end" name="search-outline"></ion-icon>
+    </ion-button>
+    <ion-button
+      expand="full"
+      (click)="Actualizar()"
+      color="tertiary"
+      shape="round"
+    >
+      Actualizar
+      <ion-icon slot="end" name="create-outline"></ion-icon>
+    </ion-button>
+    <ion-button expand="full" (click)="Eliminar()" color="danger" shape="round">
+      Eliminar
+      <ion-icon slot="end" name="trash-outline"></ion-icon>
+    </ion-button>
+    <ion-button
+      expand="full"
+      (click)="tomarFoto()"
+      color="tertiary"
+      shape="round"
+    >
+      Abrir cámara
+      <ion-icon slot="end" name="search-outline"></ion-icon>
+    </ion-button>
+  </ion-card>
+</ion-content>
+

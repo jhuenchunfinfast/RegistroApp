@@ -35,12 +35,29 @@ const routes: Routes = [
   {
     path: 'qr',
     loadChildren: () => import('./pages/qr/qr.module').then( m => m.QrPageModule),
+  }, 
+  {
+    path: 'homeprofesor',
+    loadChildren: () => import('./pages/homeprofesor/homeprofesor.module').then( m => m.HomeprofesorPageModule)
+  },
+  {
+    path: 'veralumnos',
+    loadChildren: () => import('./pages/veralumnos/veralumnos.module').then( m => m.VeralumnosPageModule)
+  },
+  {
+    path: 'verasignaturas',
+    loadChildren: () => import('./pages/verasignaturas/verasignaturas.module').then( m => m.VerasignaturasPageModule)
   },
   {
     path: '**', 
     component: NotfoundPage,
     loadChildren: () => import('./pages/notfound/notfound.module').then( m => m.NotfoundPageModule)
-  }
+  },
+
+
+ 
+ 
+
 ];
 
 @NgModule({

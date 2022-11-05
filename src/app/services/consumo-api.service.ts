@@ -26,6 +26,12 @@ export class ConsumoAPIService {
   getPosts(): Observable<any> {
     return this.http.get(this.apiURL + '/posts/').pipe(retry(3));
   }
+  getUsers(): Observable<any> {
+    return this.http.get(this.apiURL + '/comments/').pipe(retry(3));
+  }
+  getAsignaturas(): Observable<any> {
+    return this.http.get(this.apiURL + '/comments/').pipe(retry(3));
+  }
 
   createPost(post): Observable<any> {
     return this.http.post(`${this.apiURL}/posts/`, post).pipe(retry(3));
