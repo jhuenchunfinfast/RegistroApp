@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { identity } from 'rxjs';
 import { ConsumoAPIService } from 'src/app/services/consumo-api.service';
 
 
@@ -7,17 +8,9 @@ import { ConsumoAPIService } from 'src/app/services/consumo-api.service';
   templateUrl: './veralumnos.page.html',
   styleUrls: ['./veralumnos.page.scss'],
 })
-
-interface Usuario{
-  body:string;
-  id:number;
-  email:string;
-  name:string;
-  postId:number;
-
-}
+  
 export class VeralumnosPage implements OnInit {
-  usuarios:Usuario[];
+  usuarios:any;
 
   constructor(private consumoApi: ConsumoAPIService) { }
 
@@ -25,7 +18,7 @@ export class VeralumnosPage implements OnInit {
     this.consumoApi.getUsers().subscribe(
     (res) => {
       this.usuarios=res
-      console.log(this.usuarios);
+      console.log(this.usuarios[0]);
     },
     (error) => {
       console.log(error);
