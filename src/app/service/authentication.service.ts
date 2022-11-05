@@ -41,7 +41,7 @@ export class AuthenticationService {
         this.router.navigate(['folder/Inbox'], navigationExtrasOK);
         this.authState.next(true);
       });
-    } 
+    }
     if (correo == "bbb@hotmail.com") {
       var navigationExtrasOK: NavigationExtras = {
         state: {
@@ -54,7 +54,7 @@ export class AuthenticationService {
         this.router.navigate(['homeprofesor'], navigationExtrasOK);
         this.authState.next(true);
       });
-    }else {
+    } else {
       var navigationExtrasOK: NavigationExtras = {
         state: {
           user_id: '',
@@ -69,10 +69,10 @@ export class AuthenticationService {
     }
   }
   logout() {
-    this.storage.remove('USER_INFO').then(() => {
+    this.storage.remove('USER_INFO').then(res => {
       this.router.navigate(['login']);
       this.authState.next(false);
-
+      console.log(res);
     });
   }
   isAuthenticated() {

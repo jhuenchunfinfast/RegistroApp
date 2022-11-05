@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './service/authentication.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -6,10 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Inicio', url:'folder/Inbox', icon:'home'},
-    { title: 'Asistencia en linea', url:'asistencia-linea', icon:'qr-code'},
-    { title: 'Ver Alumnos', url:'veralumnos', icon:'qr-code'},
-    { title: 'Ver Asignatura', url:'verasignaturas', icon:'qr-code'},
+    { title: 'Inicio', url: 'folder/Inbox', icon: 'home' },
+    { title: 'Asistencia en linea', url: 'asistencia-linea', icon: 'qr-code' },
+    { title: 'Ver Alumnos', url: 'veralumnos', icon: 'people' },
+    { title: 'Ver Asignatura', url: 'verasignaturas', icon: 'library' },
   ];
-  constructor() {}
+  constructor(private readonly authenticationService: AuthenticationService) { }
+
+  cerrarSesion() {
+    console.log("click");
+    this.authenticationService.logout();
+  }
+
 }
