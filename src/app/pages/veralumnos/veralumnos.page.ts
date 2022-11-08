@@ -11,6 +11,7 @@ import { ConsumoAPIService } from 'src/app/services/consumo-api.service';
 
 export class VeralumnosPage implements OnInit {
   usuarios: User[];
+  photos: Photo[];
 
   constructor(private consumoApi: ConsumoAPIService) { }
 
@@ -24,6 +25,17 @@ export class VeralumnosPage implements OnInit {
         console.log(error);
       }
     );
+
+    this.consumoApi.getPhotos().subscribe(
+      (res) => {
+        this.photos = res;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+
+    
   }
 
 }
@@ -56,4 +68,12 @@ type User = {
   phone: string;
   username: string;
   website: string;
+}
+
+type Photo = {
+  albumId: string,
+  id: number,
+  title: string,
+  url: string,
+  thumbnailUrl: string,
 }

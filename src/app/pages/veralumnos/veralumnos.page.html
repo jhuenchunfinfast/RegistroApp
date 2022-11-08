@@ -5,17 +5,21 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let usuario of usuarios">
-    <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-    <ion-card-header>
-      <ion-card-title>{{usuario.username}}</ion-card-title>
-      <ion-card-subtitle>{{usuario.email}}</ion-card-subtitle>
-      <ion-card-subtitle>{{usuario.phone}}</ion-card-subtitle>
-      <ion-card-subtitle>{{usuario.website}}</ion-card-subtitle>
-    </ion-card-header>
+  <ion-card class="card-user" *ngFor="let usuario of usuarios">
+    <img alt="Silhouette of mountains" class="card-user-img"
+      src="https://media-exp1.licdn.com/dms/image/C4E03AQH3zr0gSZryPA/profile-displayphoto-shrink_800_800/0/1635880491819?e=2147483647&v=beta&t=rddRZZ7ZXPOZecRo3kbJxMPpSrz0Fy2Sr13AwG6wQeI"
+      width="150" height="150" />
+    <div>
+      <ion-card-header>
+        <ion-card-title>{{usuario.username}}</ion-card-title>
+        <ion-card-subtitle>{{usuario.email}}</ion-card-subtitle>
+        <ion-card-subtitle>{{usuario.phone}}</ion-card-subtitle>
+        <ion-card-subtitle>{{usuario.website}}</ion-card-subtitle>
+      </ion-card-header>
 
-    <ion-card-content>
-      {{usuario.address.street}} {{usuario.address.suite}}, {{usuario.address.city}}
-    </ion-card-content>
+      <ion-card-content>
+        {{usuario.address.street}} {{usuario.address.suite}}, {{usuario.address.city}}
+      </ion-card-content>
+    </div>
   </ion-card>
 </ion-content>

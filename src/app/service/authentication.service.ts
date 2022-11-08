@@ -29,7 +29,7 @@ export class AuthenticationService {
     });
   }
   login(correo, contraseña) {
-    if (correo == "aaa@hotmail.com") {
+    if (correo == "alumno@duocuc.cl") {
       var navigationExtrasOK: NavigationExtras = {
         state: {
           user_id: '1234',
@@ -38,11 +38,12 @@ export class AuthenticationService {
         }
       };
       this.storage.set('USER_INFO', navigationExtrasOK).then((response) => {
-        this.router.navigate(['folder/Inbox'], navigationExtrasOK);
+        console.log(response);
+        this.router.navigate(['folder/Inbox'], response);
         this.authState.next(true);
       });
     }
-    if (correo == "bbb@hotmail.com") {
+    if (correo == "profesor@duocuc.cl") {
       var navigationExtrasOK: NavigationExtras = {
         state: {
           user_id: '7777',

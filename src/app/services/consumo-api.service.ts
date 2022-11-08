@@ -29,8 +29,13 @@ export class ConsumoAPIService {
   getUsers(): Observable<any> {
     return this.http.get(this.apiURL + '/users/').pipe(retry(3));
   }
+  
   getAsignaturas(): Observable<any> {
     return this.http.get(this.apiURL + '/comments/').pipe(retry(3));
+  }
+
+  getPhotos(): Observable<any> {
+    return this.http.get(this.apiURL + '/photos/').pipe(retry(3));
   }
 
   createPost(post): Observable<any> {
